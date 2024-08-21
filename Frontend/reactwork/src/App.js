@@ -1,39 +1,32 @@
 import React from "react";
-import {BrowserRouter as Router,Route,Routes} from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 // import SignUp from "./SignUp.js";
 // import Header from "./Header.js";
 import SignUp from "./SignUp.js";
-import SignIn from './SignIn.js'
+import SignIn from "./SignIn.js";
+import Profile from "./Profile.js";
+import {Navbar,Nav,NavDropdown,Container} from "react-bootstrap"
 
 
 import "./App.css";
 
-
 function App() {
   return (
     <>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+      <br></br> <br></br> <br></br> <br></br> <br></br> <br></br> <br></br>
       {/* <Header /> */}
-      <div className="container border bg-transparent rounded-1  p-5 mx-auto " style={{ width: "400px", height:"550px"}}>
-        {/* <Header /> */}
-
-        <br></br>
-        <br></br>
-      
-
-        <Router>
-          <Routes>
+      <Router>
+        <Routes>
           <Route path="/" element={<SignUp />} />
-          <Route path="/SignIn" element={<SignIn/>} />
-          </Routes>
-        </Router>
-      </div>
+          <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/Profile" element={<Profile />} />
+        </Routes>
+      </Router>
     </>
   );
 }
