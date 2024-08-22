@@ -1,29 +1,33 @@
-const express=require('express');
-const app=express();
-const mongoose=require('mongoose');
-const bodyParser=require('body-parser');
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import cors from "cors";
+import bodyParser from "body-parser";
+import route from "./Routes/User.routes.js";
 
-const port=process.env.PORT ||'3000'
-
+const app = express();
 
 //Middleware
-app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+app.use(cors());
+dotenv.config();
 
-app.set('view-engine','ejs');
+const PORT = process.env.PORT || "3000";
+const URL = process.env.Mongo_URL;
 
 //Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/',{
-useNewURLParser:true,
-useUnifiedTopology:true
-});
+mongoose
+  .connect(URL)
+  .then(() => {
+    console.log("DB connected successfully...");
 
-//Use routes
+    app.listen(PORT, () => {
+      console.log(`Server is running on port number: ${PORT}`);
+    });
+  })
+  .catch((error) => console.log(error));
 
 
-
-//Start Server
-app.use(3000,()=>{
-    console.log(`Server is running at ${port}`);
-    
-})
+  app.use('/api',route);
+  
+  

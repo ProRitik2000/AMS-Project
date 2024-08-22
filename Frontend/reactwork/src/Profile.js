@@ -3,10 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 
+
 function Profile() {
   return (
   
- <Navbar bg="transparent" expand="lg" variant="dark"style={{ position: 'absolute', top: 0, left: 0 }}>
+ <Navbar bg="transparent" expand="lg" variant="dark"style={{ position: 'absolute', top: 60, left: 0 }}>
       <Container fluid>
         <Navbar.Brand href="#">Dashboard</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarNavDropdown" />

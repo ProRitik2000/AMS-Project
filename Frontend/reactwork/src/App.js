@@ -10,11 +10,12 @@ import {
 import SignUp from "./SignUp.js";
 import SignIn from "./SignIn.js";
 import Profile from "./Profile.js";
+
 import {Navbar,Nav,NavDropdown,Container} from "react-bootstrap"
 
 
-import "./App.css";
 
+import "./App.css";
 function App() {
   return (
     <>
@@ -24,7 +25,9 @@ function App() {
         <Routes>
           <Route path="/" element={<SignUp />} />
           <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/Navbar" element={<Navbar />} /> 
           <Route path="/Profile" element={<Profile />} />
+      
         </Routes>
       </Router>
     </>
