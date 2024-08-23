@@ -5,14 +5,9 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-// import SignUp from "./SignUp.js";
-// import Header from "./Header.js";
 import SignUp from "./SignUp.js";
 import SignIn from "./SignIn.js";
 import Profile from "./Profile.js";
-
-import {Navbar,Nav,NavDropdown,Container} from "react-bootstrap"
-
 
 
 import "./App.css";
@@ -25,9 +20,8 @@ function App() {
         <Routes>
           <Route path="/" element={<SignUp />} />
           <Route path="/SignIn" element={<SignIn />} />
-          <Route path="/Navbar" element={<Navbar />} /> 
+         
           <Route path="/Profile" element={<Profile />} />
-      
         </Routes>
       </Router>
     </>

@@ -12,8 +12,8 @@ function SignIn() {
   return (
     <>
       <div
-        className="container border bg-transparent rounded-1  p-5 mx-auto "
-        style={{ width: "400px", height: "550px" }}
+        className="container  bg-transparent rounded-1  p-5 mx-auto "
+        style={{ width: "400px", height: "550px",border:"1px solid #000000", outline: "1px solid #000000"  }}
       >
         <div
           className="text-center mb-4 text-black bg-warning rounded-3 p-1"

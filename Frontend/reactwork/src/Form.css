@@ -1,7 +1,0 @@
-.form-box {
-    border: 2px solid #007bff; /* Border color and width */
-    padding: 20px; /* Space inside the border */
-    border-radius: 8px; /* Rounded corners (optional) */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth (optional) */
-    background-color: #fff; /* Background color (optional) */
-}

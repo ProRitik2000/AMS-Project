@@ -6,8 +6,8 @@ function SignUp() {
   return (
     <>
       <div
-        className="container border bg-transparent rounded-1  p-5 mx-auto "
-        style={{ width: "400px", height: "550px" }}
+        className="container  bg-transparent rounded-1  p-5 mx-auto "
+        style={{ width: "400px", height: "550px",border:"1px solid #000000", outline: "1px solid #000000" }}
       >
         <div className="container d-flex  justify-content-center align-items-center ">
           <div className="row justify-content-center align-items-center  ">
@@ -22,6 +22,9 @@ function SignUp() {
                       marginLeft: "-40px",
                     }}
                   >
+
+
+                    
                     <h3>SignUp</h3>
                   </div>
                   <br></br>
