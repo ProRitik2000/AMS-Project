@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 
-function Profile() {
+function Home() {
   return (
     <Navbar
       bg="dark"
@@ -81,9 +81,7 @@ function Profile() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-
-        
   );
 }
 
-export default Profile;
+export default Home;
