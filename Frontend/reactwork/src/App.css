@@ -12,3 +12,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.form-group {
+  position: relative;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0%; /* Right side ke liye space */
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #000; /* Icon color */
+  font-size: 1.2rem; /* Icon size */
+
+}

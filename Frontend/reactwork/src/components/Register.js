@@ -1,61 +1,72 @@
 import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import swal from 'sweetalert';
+import swal from "sweetalert";
+import '../App.css'
+
 function Register() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
-      // Check if email and password fields are empty
-      if (!email || !password || !username) {
-        swal({
-          title: 'Error!',
-          text: 'All the fields are required.',
-          icon: 'warning',
-        buttons: 'OK'
-        });
-        return;
-      }
-    try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', {
-        username,
-        email,
-        password
+    // Check if email and password fields are empty
+    if (!email || !password || !username) {
+      swal({
+        title: "Error!",
+        text: "All the fields are required.",
+        icon: "warning",
+        buttons: "OK",
       });
- 
+      return;
+    }
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/signup",
+        {
+          username,
+          email,
+          password,
+        }
+      );
+
       if (response.data.success) {
         swal({
-          title: 'Success!',
-          text: 'Registration successful!',
-          icon: 'success',
-          buttons: 'OK'
+          title: "Success!",
+          text: "Registration successful!",
+          icon: "success",
+          buttons: "OK",
         });
       } else {
         swal({
-          title: 'Failed!',
-          text: 'Registration failed!',
-          icon: 'error',
-          buttons: 'OK'
+          title: "Failed!",
+          text: "Registration failed!",
+          icon: "error",
+          buttons: "OK",
         });
       }
-
-      
     } catch (error) {
-      console.error('Error during registration:', error);
+      console.error("Error during registration:", error);
+      const errorMessage =
+        error.response?.data?.message ||
+        "An error occured during  registration";
+
       swal({
-        title: 'Error!',
-        text: 'An error occurred during registration.',
-        icon: 'error',
-        buttons: 'OK'
+        title: "Error!",
+        text: errorMessage,
+        icon: "error",
+        buttons: "OK",
       });
     }
   };
- 
 
   return (
     <>
@@ -105,15 +116,24 @@ function Register() {
                       style={{ width: "135%", marginLeft: "-40px" }}
                     />
                   </div>
-                  <div className="mb-4">
+                  <div className="form-group position-relative mb-4">
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       className="form-control"
                       placeholder="Enter your password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       style={{ width: "135%", marginLeft: "-40px" }}
                     />
+                    <i
+                      className={`fa ${
+                        showPassword ? "fa-eye-slash" : "fa-eye"
+                       
+                      } password-toggle`}
+                      style={{marginRight:"-14%"}}
+                      onClick={togglePasswordVisibility}
+                      
+                    ></i>
                   </div>
                   <div className="text-center">
                     <button type="submit" className="btn btn-primary">
@@ -125,9 +145,7 @@ function Register() {
                     <h6 style={{ color: "white", marginTop: "2px" }}>
                       Already have an account?
                     </h6>
-                    <a href="/login" >
-                      SignIn
-                    </a>
+                    <a href="/login">SignIn</a>
                   </div>
                 </form>
               </div>

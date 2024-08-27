@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import {LinkContainer} from 'react-router-bootstrap'
 
 function Home() {
   return (
@@ -22,11 +23,17 @@ function Home() {
               id="manage-asset-dropdown"
               style={{ color: "white" }}
             >
-              <NavDropdown.Item href="#">Asset Overview</NavDropdown.Item>
-              <NavDropdown.Item href="#">Add New Asset</NavDropdown.Item>
+                <LinkContainer  to="/ViewAsset">
+              <NavDropdown.Item href="">View Asset</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer  to="/AddAsset">
+              <NavDropdown.Item href="">Add New Asset</NavDropdown.Item>
+              </LinkContainer>
+          
+              <NavDropdown.Item href="#">Edit Asset</NavDropdown.Item>
               <NavDropdown.Item href="#">Asset History</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#">Archived Assets</NavDropdown.Item>
+              <NavDropdown.Item href="#">Delete Asset</NavDropdown.Item>
+    
             </NavDropdown>
 
             <NavDropdown title="Assign Asset" id="assign-asset-dropdown">

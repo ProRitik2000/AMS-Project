@@ -9,6 +9,11 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -92,16 +97,25 @@ function Login() {
             style={{ width: "102%", marginLeft: "-3px" }}
           />
         </div>
-        <div className="mb-4">
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ width: "102%", marginLeft: "-3px" }}
-          />
-        </div>
+        <div className="form-group position-relative mb-4">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      className="form-control"
+                      placeholder="Enter your password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      style={{ width: "102%", marginLeft: "-3px" }}
+                    />
+                    <i
+                      className={`fa ${
+                        showPassword ? "fa-eye-slash" : "fa-eye"
+                       
+                      } password-toggle`}
+                      style={{marginRight:"2%"}}
+                      onClick={togglePasswordVisibility}
+                      
+                    ></i>
+                  </div>
         <div className="text-center">
           <button
             type="submit"
