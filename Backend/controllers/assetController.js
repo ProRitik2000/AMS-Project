@@ -1,19 +1,20 @@
 import Asset from '../Models/Asset.js';
 
 // Create a new asset
-export const createAsset = async (req, res) => {
+export const addAssets = async (req, res) => {
   try {
-    const { name, type, serialNumber, status } = req.body;
-    const newAsset = new Asset({ name, type, serialNumber, status });
+    const {  serialNumber,name, type,  status } = req.body;
+    const newAsset = new Asset({ serialNumber,name, type, status });
     await newAsset.save();
-    res.status(201).json({ message: 'Asset created successfully', asset: newAsset });
+    res.status(201).json({ message: 'Asset saved successfully', asset: newAsset });
   } catch (error) {
-    res.status(500).json({ message: 'Error creating asset', error: error.message });
+    console.error(error)
+    res.status(500).json({ message: 'Error adding asset', error: error.message });
   }
 };
 
 // Get all assets
-export const getAssets = async (req, res) => {
+export const getAllAssets = async (req, res) => {
   try {
     const assets = await Asset.find();
     res.status(200).json(assets);

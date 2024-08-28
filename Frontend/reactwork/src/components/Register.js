@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
-import '../App.css'
+import "../App.css";
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -28,6 +27,7 @@ function Register() {
       });
       return;
     }
+
     try {
       const response = await axios.post(
         "http://localhost:5000/api/auth/signup",
@@ -128,11 +128,9 @@ function Register() {
                     <i
                       className={`fa ${
                         showPassword ? "fa-eye-slash" : "fa-eye"
-                       
                       } password-toggle`}
-                      style={{marginRight:"-14%"}}
+                      style={{ marginRight: "-14%" }}
                       onClick={togglePasswordVisibility}
-                      
                     ></i>
                   </div>
                   <div className="text-center">

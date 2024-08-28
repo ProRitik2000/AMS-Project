@@ -6,6 +6,7 @@ import {LinkContainer} from 'react-router-bootstrap'
 
 function Home() {
   return (
+    <>
     <Navbar
       bg="dark"
       variant="dark"
@@ -31,7 +32,6 @@ function Home() {
               </LinkContainer>
           
               <NavDropdown.Item href="#">Edit Asset</NavDropdown.Item>
-              <NavDropdown.Item href="#">Asset History</NavDropdown.Item>
               <NavDropdown.Item href="#">Delete Asset</NavDropdown.Item>
     
             </NavDropdown>
@@ -88,6 +88,13 @@ function Home() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+   
+    <div className="text-center">
+      <h1 style={{fontFamily:"fantasy",marginTop:"25%",fontSize:"4rem",color:"white"}}>Wecome to Asset Management System</h1>
+      <p1 style={{color:"black",fontWeight:"bold",fontSize:"1.5rem"}}>Maximize Your Assets, Simplify Your World</p1>
+    </div>
+    </>
+  
   );
 }
 

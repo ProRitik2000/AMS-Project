@@ -1,6 +1,11 @@
 import mongoose from 'mongoose';
 
 const assetSchema = new mongoose.Schema({
+  serialNumber: {
+    type: String,
+    required: true,
+    unique: true
+  },
   name: {
     type: String,
     required: true
@@ -9,23 +14,11 @@ const assetSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  serialNumber: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  quantity: {
-    type: Number,
-    required: true
-  },
-  purchaseDate: {
-    type: Date,
-    required: true
-  },
   status: {
     type: String,
-    enum: ['Active', 'Inactive', 'Maintenance'], // You can define the status options based on your requirements
-    default: 'Active'
+    enum: ['available', 'in-use', 'maintenance'], // Example enum values
+    required: true,
+  
   }
 }, {
   timestamps: true

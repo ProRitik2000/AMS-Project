@@ -2,21 +2,31 @@
 import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, TextField } from '@mui/material';
 import swal from 'sweetalert'; // Import SweetAlert
+import axios from 'axios';
 
 const AssetTable = () => {
   const [assets, setAssets] = useState([]);
-  const [newAsset, setNewAsset] = useState({ name: '', type: '', serialNumber: '', status: '' });
+  const [newAsset, setNewAsset] = useState({ serialNumber: '', name: '', type: '', status: '' });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewAsset({ ...newAsset, [name]: value });
   };
 
-  const handleAddAsset = () => {
-    if (newAsset.name && newAsset.type && newAsset.serialNumber && newAsset.status) {
+  const handleAddAsset = async() => {
+    if ( newAsset.serialNumber && newAsset.name && newAsset.type  && newAsset.status) {
       setAssets([...assets, newAsset]);
-      setNewAsset({ name: '', type: '', serialNumber: '', status: '' }); // Clear the form fields
+      setNewAsset({ serialNumber: '',name: '', type: '', status: '' }); // Clear the form fields
 
+     
+      try {
+        const response = await axios.post('http://localhost:5000/api/assets/addAssets',newAsset);
+
+
+        if(response.status===201){
+     
+          setNewAsset({serialNumber:'',name:'',type:'',status:''})
+     
       // Show success message
       swal({
         title: 'Success!',
@@ -24,16 +34,26 @@ const AssetTable = () => {
         icon: 'success',
         button: 'OK',
       });
-    } else {
-      // Show error message if any field is empty
-      swal({
-        title: 'Error!',
-        text: 'Please fill all the fields.',
-        icon: 'error',
-        button: 'OK',
-      });
-    }
-  };
+    } 
+  } catch (error) {
+    console.error('Error saving asset:', error);
+    swal({
+      title: 'Error!',
+      text: 'Failed to save data to the database.',
+      icon: 'error',
+      button: 'OK',
+    });
+  }
+} else {
+  // Show error message if any field is empty
+  swal({
+    title: 'Error!',
+    text: 'Please fill all the fields.',
+    icon: 'error',
+    button: 'OK',
+  });
+}
+};
 
   return (
     <>
@@ -42,10 +62,10 @@ const AssetTable = () => {
         <Table aria-label="asset table" style={{ backgroundColor: 'transparent' }}>
           <TableHead >
             <TableRow>
-              <TableCell style={{ fontFamily: 'fantasy' }}>S.No.</TableCell>
-              <TableCell style={{ fontFamily: 'fantasy' }}>Name</TableCell>
-              <TableCell style={{ fontFamily: 'fantasy' }}>Type</TableCell>
-              <TableCell style={{ fontFamily: 'fantasy' }}>Status</TableCell>
+              <TableCell style={{ fontFamily:"serif",fontWeight:"bolder"}}>S.No.</TableCell>
+              <TableCell style={{ fontFamily: 'serif' ,fontWeight:"bolder"}}>Name</TableCell>
+              <TableCell style={{ fontFamily: 'serif',fontWeight:"bolder" }}>Type</TableCell>
+              <TableCell style={{ fontFamily: 'serif',fontWeight:"bolder" }}>Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
