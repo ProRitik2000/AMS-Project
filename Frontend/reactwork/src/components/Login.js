@@ -1,13 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './Home.js'
+import "./Home.js";
 import axios from "axios";
 import swal from "sweetalert";
 function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -17,49 +17,52 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-      // Check if email and password fields are empty
-      if (!email || !password) {
-        swal({
-          title: 'Error!',
-          text: 'Email and password are required.',
-          icon: 'warning',
-          confirmButtonText: 'OK'
-        });
-        return;
-      }
-      
-    try {
-      const response = await axios.post('http://localhost:5000/api/auth/signin', {
-        email,
-        password
+    // Check if email and password fields are empty
+    if (!email || !password) {
+      swal({
+        title: "Error!",
+        text: "Email and password are required.",
+        icon: "warning",
+        confirmButtonText: "OK",
       });
+      return;
+    }
 
-      if (response.data.status === 'success') {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/signin",
+        {
+          email,
+          password,
+        }
+      );
+
+      if (response.data.status === "success") {
         // Navigate to the home page if login is successful
         swal({
-          title: 'Success!',
-          text: 'Login successful!',
-          icon: 'success',
-          button: 'OK'
+          title: "Success!",
+          text: "Login successful!",
+          icon: "success",
+          button: "OK",
         }).then(() => {
-          navigate('/home');
+          navigate("/home");
         });
       } else {
         // Show error if login failed
         swal({
-          title: 'Failed!',
-          text: 'Incorrect email or password. Please try again.',
-          icon: 'error',
-          button: 'OK'
+          title: "Failed!",
+          text: "Incorrect email or password. Please try again.",
+          icon: "error",
+          button: "OK",
         });
       }
     } catch (error) {
-      console.error('Error during login:', error);
+      console.error("Error during login:", error);
       swal({
-        title: 'Error!',
-        text: 'An error occurred during login.',
-        icon: 'error',
-        button: 'OK'
+        title: "Error!",
+        text: "An error occurred during login.",
+        icon: "error",
+        button: "OK",
       });
     }
   };
@@ -98,24 +101,22 @@ function Login() {
           />
         </div>
         <div className="form-group position-relative mb-4">
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      className="form-control"
-                      placeholder="Enter your password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      style={{ width: "102%", marginLeft: "-3px" }}
-                    />
-                    <i
-                      className={`fa ${
-                        showPassword ? "fa-eye-slash" : "fa-eye"
-                       
-                      } password-toggle`}
-                      style={{marginRight:"2%"}}
-                      onClick={togglePasswordVisibility}
-                      
-                    ></i>
-                  </div>
+          <input
+            type={showPassword ? "text" : "password"}
+            className="form-control"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            style={{ width: "102%", marginLeft: "-3px" }}
+          />
+          <i
+            className={`fa ${
+              showPassword ? "fa-eye-slash" : "fa-eye"
+            } password-toggle`}
+            style={{ marginRight: "2%" }}
+            onClick={togglePasswordVisibility}
+          ></i>
+        </div>
         <div className="text-center">
           <button
             type="submit"

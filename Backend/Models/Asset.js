@@ -1,29 +1,43 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const assetSchema = new mongoose.Schema({
-  serialNumber: {
-    type: String,
-    required: true,
-    unique: true
+const assetSchema = new mongoose.Schema(
+  {
+    serialNumber: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: true,
+    },
+    status: {
+      type: String,
+      enum: ["Available", "In-use", "Maintenance"], // Example enum values
+      required: true,
+    },
   },
-  name: {
-    type: String,
-    required: true
-  },
-  type: {
-    type: String,
-    required: true
-  },
-  status: {
-    type: String,
-    enum: ['available', 'in-use', 'maintenance'], // Example enum values
-    required: true,
-  
+  {
+    timestamps: true,
   }
-}, {
-  timestamps: true
-});
+);
 
-const Asset = mongoose.model('Asset', assetSchema);
+const Asset = mongoose.model("Asset", assetSchema);
 
 export default Asset;
+// const mongoose = require('mongoose');
+
+// const assetSchema = new mongoose.Schema({
+//   serialNumber: { type: String, required: true },
+//   name: { type: String, required: true },
+//   type: { type: String, required: true },
+//   status: { type: String, required: true },
+// });
+
+// const AssetModel = mongoose.model("Asset", assetSchema);
+
+// export default AssetModel;
