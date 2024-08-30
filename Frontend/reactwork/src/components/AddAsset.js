@@ -1,14 +1,12 @@
 import React from "react";
-import AssetTable from "./AssetTable";
-function addAssets(){
-    return(
+import AssetTable from "./AssetTable.js";
+
+function addAssets() {
+  return (
     <>
-
-    <br></br> <br></br> <br></br> <br></br>
-    <AssetTable/>
+      <AssetTable />
     </>
-
-    )
+  );
 }
 
-export default  addAssets;
+export default addAssets;

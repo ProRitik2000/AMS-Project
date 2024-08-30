@@ -31,7 +31,9 @@ function Home() {
                   <NavDropdown.Item href="">Add New Asset</NavDropdown.Item>
                 </LinkContainer>
 
-                <NavDropdown.Item href="#">Edit Asset</NavDropdown.Item>
+                <NavDropdown.Item href="/EditAsset">
+                  Edit Asset
+                </NavDropdown.Item>
                 <NavDropdown.Item href="#">Delete Asset</NavDropdown.Item>
               </NavDropdown>
 
@@ -81,7 +83,7 @@ function Home() {
                   style={{ fontSize: "1.3rem", color: "gray" }}
                 ></i>
               </Nav.Link>
-              <Nav.Link href="#">
+              <Nav.Link href="/Logout">
                 <i
                   class="fa-solid fa-right-from-bracket"
                   style={{ fontSize: "1.3rem", color: "gray" }}

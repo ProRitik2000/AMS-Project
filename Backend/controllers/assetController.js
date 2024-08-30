@@ -3,15 +3,15 @@ import Asset from "../Models/Asset.js";
 // Create a new asset
 export const addAssets = async (req, res) => {
   try {
-    const { serialNumber, name, type, status } = req.body;
+    const { name, type, status } = req.body;
 
     // Check if any field is missing
-    if (!serialNumber || !name || !type || !status) {
+    if (!name || !type || !status) {
       return res.status(400).json({ message: "All fields are required." });
     }
 
     // Create a new asset
-    const newAsset = new Asset({ serialNumber, name, type, status });
+    const newAsset = new Asset({ name, type, status });
     const savedAsset = await newAsset.save();
 
     res.status(201).json(savedAsset);

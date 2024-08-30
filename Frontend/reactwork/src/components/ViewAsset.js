@@ -8,9 +8,6 @@ import {
   TableRow,
   Paper,
   Button,
-  TextField,
-  MenuItem,
-  Select,
 } from "@mui/material";
 import swal from "sweetalert";
 import axios from "axios";
@@ -22,8 +19,6 @@ const AssetTable = () => {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [status, setStatus] = useState("");
-  const [nameError, setNameError] = useState(false); // State for name error
-  const [nameHelperText, setNameHelperText] = useState(""); // State for error message
 
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -35,13 +30,7 @@ const AssetTable = () => {
     }
   }, []);
 
-  const validateName = (name) => {
-    // Regular expression to match only letters
-    const nameRegex = /^[A-Za-z\s]+$/;
-    return nameRegex.test(name);
-  };
-
-  const handleAddAsset = async (e) => {
+  const handleAddAssets = async (e) => {
     e.preventDefault();
 
     if (!name || !type || !status) {
@@ -52,15 +41,6 @@ const AssetTable = () => {
         buttons: "OK",
       });
       return;
-    }
-
-    if (!validateName(name)) {
-      setNameError(true);
-      setNameHelperText("Asset name must only contain letters.");
-      return;
-    } else {
-      setNameError(false);
-      setNameHelperText("");
     }
 
     try {
@@ -115,7 +95,7 @@ const AssetTable = () => {
       }}
     >
       <h1 style={{ fontWeight: "bold", fontFamily: "serif" }}>
-        Add Assets<hr style={{ marginTop: "1px" }}></hr>
+        View all<hr style={{ marginTop: "1px" }}></hr>
       </h1>
 
       <div style={{ width: "50%" }}>
@@ -182,84 +162,21 @@ const AssetTable = () => {
 
         <div
           style={{
-            marginTop: "20px",
             width: "100%",
             display: "flex",
-            flexWrap: "wrap",
+            justifyContent: "center", // Center align buttons horizontally
             gap: "10px",
           }}
         >
-          <TextField
-            label="Asset Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            error={nameError} // Set error state
-            helperText={nameHelperText} // Show error message
-            style={{
-              flex: "1 1 calc(50% - 10px)",
-              backgroundColor: "transparent",
-            }}
-          />
-          <Select
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-            displayEmpty
-            style={{
-              flex: "1 1 calc(50% - 10px)",
-              backgroundColor: "transparent",
-            }}
+          <Button
+            text="center"
+            variant="contained"
+            color="info"
+            onClick={handlePrevClick}
+            style={{ marginTop: "10px" }}
           >
-            <MenuItem value="" disabled>
-              Select Type
-            </MenuItem>
-            <MenuItem value="Fixed">Fixed</MenuItem>
-            <MenuItem value="Current">Current</MenuItem>
-            <MenuItem value="Intangible">Intangible</MenuItem>
-            <MenuItem value="Financial">Financial</MenuItem>
-          </Select>
-          <Select
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-            displayEmpty
-            style={{
-              flex: "1 1 calc(50% - 10px)",
-              backgroundColor: "transparent",
-            }}
-          >
-            <MenuItem value="" disabled>
-              Select Status
-            </MenuItem>
-            <MenuItem value="Available">Available</MenuItem>
-            <MenuItem value="In-use">In-use</MenuItem>
-            <MenuItem value="Maintenance">Maintenance</MenuItem>
-          </Select>
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "center", // Center align buttons horizontally
-              gap: "10px",
-            }}
-          >
-            <Button
-              text="center"
-              variant="contained"
-              color="success"
-              onClick={handleAddAsset}
-              style={{ marginTop: "10px" }}
-            >
-              ADD
-            </Button>
-
-            <Button
-              variant="contained"
-              color="info"
-              onClick={handlePrevClick}
-              style={{ marginTop: "10px" }}
-            >
-              PREV
-            </Button>
-          </div>
+            PREV
+          </Button>
         </div>
       </div>
     </div>

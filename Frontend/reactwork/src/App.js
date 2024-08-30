@@ -6,7 +6,9 @@ import Login from "./components/Login.js";
 import Register from "./components/Register.js";
 import AddAsset from "./components/AddAsset.js";
 import AssetTable from "./components/AssetTable.js";
-
+import ViewAsset from "./components/ViewAsset.js";
+import EditAsset from "./components/EditAsset.js";
+import Logout from "./components/Logout.js";
 function App() {
   return (
     <>
@@ -17,6 +19,9 @@ function App() {
           <Route path="/Home" element={<Home />} />
           <Route path="/AddAsset" element={<AddAsset />} />
           <Route path="/AssetTable" element={<AssetTable />} />
+          <Route path="/ViewAsset" element={<ViewAsset/>} />
+          <Route  path="/EditAsset" element={<EditAsset />} />
+          <Route path="/Logout" element={<Logout/>} />
         </Routes>
       </Router>
     </>

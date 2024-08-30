@@ -2,11 +2,7 @@ import mongoose from "mongoose";
 
 const assetSchema = new mongoose.Schema(
   {
-    serialNumber: {
-      type: String,
-      required: true,
-      unique: true,
-    },
+
     name: {
       type: String,
       required: true,
