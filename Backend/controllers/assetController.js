@@ -1,6 +1,7 @@
 import Asset from "../Models/Asset.js";
 
 // Create a new asset
+// Create a new asset
 export const addAssets = async (req, res) => {
   try {
     const { name, type, status } = req.body;
@@ -20,7 +21,6 @@ export const addAssets = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
 // Get all assets
 export const getAllAssets = async (req, res) => {
   try {

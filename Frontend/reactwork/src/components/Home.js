@@ -32,14 +32,13 @@ function Home() {
                 </LinkContainer>
 
                 <NavDropdown.Item href="/EditAsset">
-                  Edit Asset
+                  Edit/Delete Asset
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#">Delete Asset</NavDropdown.Item>
+
               </NavDropdown>
 
               <NavDropdown title="Assign Asset" id="assign-asset-dropdown">
                 <NavDropdown.Item href="#">Assign to User</NavDropdown.Item>
-                <NavDropdown.Item href="#">Bulk Assign</NavDropdown.Item>
                 <NavDropdown.Item href="#">Manage Assignments</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown
@@ -103,7 +102,7 @@ function Home() {
             color: "white",
           }}
         >
-          Wecome to Asset Management System
+          Welcome to Asset Management System
         </h1>
         <p1 style={{ color: "black", fontWeight: "bold", fontSize: "1.5rem" }}>
           Maximize Your Assets, Simplify Your World

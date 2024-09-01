@@ -214,6 +214,7 @@ const AssetTable = () => {
             </MenuItem>
             <MenuItem value="Fixed">Fixed</MenuItem>
             <MenuItem value="Current">Current</MenuItem>
+            <MenuItem value="Tangible">Tangible</MenuItem>
             <MenuItem value="Intangible">Intangible</MenuItem>
             <MenuItem value="Financial">Financial</MenuItem>
           </Select>

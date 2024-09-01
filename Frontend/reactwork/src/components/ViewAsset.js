@@ -15,7 +15,6 @@ import { useNavigate } from "react-router-dom";
 
 const AssetTable = () => {
   const [assets, setAssets] = useState([]);
-
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [status, setStatus] = useState("");
@@ -45,7 +44,7 @@ const AssetTable = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/assets/addAssets",
+        "http://localhost:5000/api/assets/getAllAssets",
         {
           name,
           type,
@@ -84,6 +83,9 @@ const AssetTable = () => {
     navigate("/Home"); // Navigate to the home page
   };
 
+  const handleViewByIdClick =() =>{
+    navigate("/ViewById");
+  }
   return (
     <div
       style={{
@@ -101,7 +103,7 @@ const AssetTable = () => {
       <div style={{ width: "50%" }}>
         <TableContainer
           component={Paper}
-          style={{ marginTop: "0px", maxHeight: "300px", overflowY: "auto" }}
+          style={{ marginTop: "0px", maxHeight: "300px", overflow: "auto" }}
         >
           <Table
             aria-label="asset table"
@@ -177,6 +179,17 @@ const AssetTable = () => {
           >
             PREV
           </Button>
+
+          <Button
+            text="center"
+            variant="contained"
+            color="info"
+            onClick={handleViewByIdClick}
+            style={{ marginTop: "10px" }}
+          >
+            VIEW
+          </Button>
+
         </div>
       </div>
     </div>

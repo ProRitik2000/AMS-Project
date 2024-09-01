@@ -8,6 +8,9 @@ import AddAsset from "./components/AddAsset.js";
 import AssetTable from "./components/AssetTable.js";
 import ViewAsset from "./components/ViewAsset.js";
 import EditAsset from "./components/EditAsset.js";
+import AssignAsset from "./components/AssignAsset.js";
+import ViewById from "./components/ViewById.js";
+
 import Logout from "./components/Logout.js";
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
           <Route path="/AssetTable" element={<AssetTable />} />
           <Route path="/ViewAsset" element={<ViewAsset/>} />
           <Route  path="/EditAsset" element={<EditAsset />} />
+          <Route path="/AssignAsset" element={<AssignAsset/>}/>
+          <Route path="/viewById" element={<ViewById />} />
+
           <Route path="/Logout" element={<Logout/>} />
         </Routes>
       </Router>
