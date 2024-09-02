@@ -4,7 +4,7 @@ function UserAssets({ userId }) {
     const [assets, setAssets] = useState([]);
 
     useEffect(() => {
-        fetch(/api/user / ${ userId } / assets)
+        fetch(/api/User / ${ userId } / assets)
             .then(response => response.json())
             .then(data => setAssets(data));
     }, [userId]);
